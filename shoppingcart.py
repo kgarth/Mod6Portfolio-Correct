@@ -3,9 +3,9 @@ class ShoppingCart():
     current_date = ''
     cart_items = []
 
-    def __init__(self):
-        self.customer_name = 'none'
-        self.current_date = 'January 1, 2020'
+    def __init__(self, name = 'none', date = 'January 1, 2020'):
+        self.customer_name = name
+        self.current_date = date
 
     def set_name(self, name):
         self.customer_name = name
@@ -15,26 +15,26 @@ class ShoppingCart():
 
     def add_item(self, ItemToPurchase):
         for item in self.cart_items:
-            if item['Name'] == ItemToPurchase['Name']:
+            if item['Name'].lower() == ItemToPurchase['Name'].lower():
                 print('Item already in cart')
         else:
             self.cart_items.append(ItemToPurchase)
 
     def remove_item(self, ItemToRemove):
         for pos, item in enumerate(self.cart_items):
-            if item['Name'] == ItemToRemove:
+            if item['Name'].lower() == ItemToRemove.lower():
                 del self.cart_items[pos]
         else:
             print('Item not found in cart. Nothing removed.')
 
     def modify_item(self, ItemToPurchase):
         for pos, item in enumerate(self.cart_items):
-            if item['Name'] == ItemToPurchase['Name']:
+            if item['Name'].lower() == ItemToPurchase['Name'].lower():
                 if item['Quantity'] != ItemToPurchase['Quantity']:
                     self.cart_items[pos]['Quantity'] = ItemToPurchase['Quantity']
                 if item['Cost'] != ItemToPurchase['Cost']:
                     self.cart_items[pos]['Cost'] = ItemToPurchase['Cost']
-                if item['Description'] != ItemToPurchase['Description']:
+                if item['Description'].lower() != ItemToPurchase['Description'].lower():
                     self.cart_items[pos]['Description'] = ItemToPurchase['Description']
                 break
         else:
@@ -49,7 +49,7 @@ class ShoppingCart():
             total += (item['Cost'] * item['Quantity'])
         return total
 
-    def print_toal(self):
+    def print_total(self):
         if len(self.cart_items) == 0:
             print('SHOPPING CART IS EMTPY')
         else:
