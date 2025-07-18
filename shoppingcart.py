@@ -22,6 +22,7 @@ class ShoppingCart():
         for item in self.cart_items:
             if item['Name'].lower() == ItemToPurchase['Name'].lower():
                 print('Item already in cart')
+                break
         else:
             self.cart_items.append(ItemToPurchase)
 
@@ -29,6 +30,7 @@ class ShoppingCart():
         for pos, item in enumerate(self.cart_items):
             if item['Name'].lower() == ItemToRemove.lower():
                 del self.cart_items[pos]
+                break
         else:
             print('Item not found in cart. Nothing removed.')
 
