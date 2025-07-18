@@ -1,18 +1,23 @@
 class ShoppingCart():
+    # Set class attributes
     customer_name = ''
     current_date = ''
     cart_items = []
 
+    # Default constructor
     def __init__(self, name = 'none', date = 'January 1, 2020'):
         self.customer_name = name
         self.current_date = date
 
+    # Name setter
     def set_name(self, name):
         self.customer_name = name
 
+    # Date setter
     def set_date(self, date):
         self.current_date = date
 
+    # List of class methods
     def add_item(self, ItemToPurchase):
         for item in self.cart_items:
             if item['Name'].lower() == ItemToPurchase['Name'].lower():
@@ -61,7 +66,7 @@ class ShoppingCart():
                                                  item['Cost'], (item['Cost'] * 
                                                                 item['Quantity'])))
 
-            print('Total: {}'.format(self.get_cost_of_cart()))
+            print('Total: ${}'.format(self.get_cost_of_cart()))
 
     def print_descriptions(self):
         if len(self.cart_items) == 0:
